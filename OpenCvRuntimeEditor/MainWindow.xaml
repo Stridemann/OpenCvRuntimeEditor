@@ -1,0 +1,216 @@
+﻿<Window x:Class="OpenCvRuntimeEditor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OpenCvRuntimeEditor"
+        xmlns:templateSelectors="clr-namespace:OpenCvRuntimeEditor.Styles.TemplateSelectors"
+        xmlns:converters="clr-namespace:OpenCvRuntimeEditor.Converters"
+        xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:behaviours="clr-namespace:OpenCvRuntimeEditor.Behaviours"
+        xmlns:controls="clr-namespace:OpenCvRuntimeEditor.Controls"
+        Title="{Binding WIndowTitle}"
+        Height="450"
+        Width="800"
+        WindowState="Maximized"
+        UseLayoutRounding="True"
+        Closing="MainWindow_OnClosing"
+        DataContext="{StaticResource MainViewModel}">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/PinDataTemplates.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <converters:FilePathToBooleanConverter x:Key="FilePathToBooleanConverter" />
+            <converters:NullVisibilityConverter x:Key="NullVisibilityConverter" />
+            <templateSelectors:PinDataTemplateSelector x:Key="DataTemplateSelector" />
+        </ResourceDictionary>
+    </Window.Resources>
+
+
+    <Grid
+        HorizontalAlignment="Stretch"
+        VerticalAlignment="Stretch">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <b:Interaction.Behaviors>
+            <behaviours:NodeCanvasHotkeysBehaviour />
+        </b:Interaction.Behaviors>
+
+        <Grid Name="BgGrid" Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <b:Interaction.Behaviors>
+                <behaviours:NodesMenuWindowOpenBehaviour />
+                <behaviours:NodeLinkingBehaviour NodesLinksRootGrid="{Binding ElementName=NodesLinksRoot}" />
+                <behaviours:CanvasDragBehaviour ScaleX="{Binding ElementName=ZoomBorder, Path=ScaleX}"
+                                                ScaleY="{Binding ElementName=ZoomBorder, Path=ScaleY}" />
+                <behaviours:CanvasObjectsSelectionBehaviour />
+                <behaviours:VariableDragBehaviour />
+            </b:Interaction.Behaviors>
+
+
+            <Canvas Name="BgCanvas"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    SnapsToDevicePixels="True"
+                    UseLayoutRounding="True">
+                <Canvas.Background>
+                    <ImageBrush
+                        ImageSource="images/EditGraphBackground.png"
+                        TileMode="Tile"
+                        ViewportUnits="Absolute"
+                        Viewport="0,0,200,200">
+                        <ImageBrush.RelativeTransform>
+                            <TransformGroup>
+                                <TranslateTransform X="{Binding ElementName=ZoomBorder, Path=OffsetX}"
+                                                    Y="{Binding ElementName=ZoomBorder, Path=OffsetY}" />
+                                <ScaleTransform ScaleX="{Binding ElementName=ZoomBorder, Path=ScaleX}"
+                                                ScaleY="{Binding ElementName=ZoomBorder, Path=ScaleY}" />
+                            </TransformGroup>
+                        </ImageBrush.RelativeTransform>
+                    </ImageBrush>
+                </Canvas.Background>
+            </Canvas>
+
+
+            <Grid Name="NodesLinksRoot"
+                  HorizontalAlignment="Stretch"
+                  VerticalAlignment="Stretch" />
+
+            <controls:ZoomBorder x:Name="ZoomBorder"
+                                 HorizontalAlignment="Stretch"
+                                 VerticalAlignment="Stretch"
+                                 RenderTransformOrigin="0,0"
+                                 BorderThickness="2"
+                                 BorderBrush="Orange"
+                                 ClipToBounds="False"
+                                 CanvasRootGrid="{Binding ElementName=BgGrid}">
+
+                <Grid Name="NodeScalableCanvas"
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch">
+                    <Grid Name="NodesRoot"
+                          HorizontalAlignment="Left" />
+                </Grid>
+
+
+            </controls:ZoomBorder>
+
+            <!--<Image Source="Images/WIndows/EditGraphOverlay.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Fill" Focusable="False" IsEnabled="False"/>-->
+
+        </Grid>
+
+        <Grid Name="LeftPanel"
+              Column="0"
+              Background="#1B1B1B">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" MinHeight="300" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" MinHeight="200" />
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Stretch"
+                        Margin="5">
+                <Separator />
+                <Button Content="Save"
+                        Height="40"
+                        Margin="0,0,0,10"
+                        Command="{Binding SaveCommand}"
+                        IsEnabled="{Binding CurrentFilePath, Converter={StaticResource FilePathToBooleanConverter}}" />
+                <Button Content="Save As"
+                        Margin="0,0,0,2"
+                        Command="{Binding SaveAsCommand}" />
+                <Button Content="Load"
+                        Command="{Binding LoadCommand}" />
+                <Separator />
+
+                <Expander Header="Last opened files"
+                          Foreground="White"
+                          Background="#363636"
+                          BorderThickness="2"
+                          BorderBrush="DimGray"
+                          IsExpanded="True">
+                    <ItemsControl ItemsSource="{ Binding LastOpenedFiles}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Button Background="Gray"
+                                        Name="NodeSelectButton"
+                                        Foreground="White"
+                                        HorizontalAlignment="Stretch"
+                                        HorizontalContentAlignment="Left"
+                                        Content="{Binding FileName}" ToolTip="{Binding FilePath}"
+                                        Command="{Binding ElementName=LeftPanel, Path=DataContext.LoadFileCommand}"
+                                        CommandParameter="{Binding FilePath}" />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Expander>
+
+                <Separator Height="20" />
+                <Grid>
+                    <Label Content="Variables:" 
+                           Foreground="White" 
+                           HorizontalAlignment="Left" 
+                           FontSize="20"/>
+                    <Button Name="AddVariableButton"
+                        HorizontalAlignment="Right" 
+                            VerticalAlignment="Center" 
+                            Width="25" 
+                            Height="25"
+                            Click="AddVariableClick">
+                        <Image Source="Images/Buttons/Button_AddObj.png"/>
+                    </Button>
+                </Grid>
+                
+
+                <ItemsControl ItemsSource="{ Binding NodesCanvas.Variables}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <StackPanel Orientation="Vertical" Background="DimGray">
+                                    <Grid>
+                                        <Button Background="Gray"
+                                                Name="NodeSelectButton"
+                                                Foreground="White"
+                                                HorizontalAlignment="Stretch"
+                                                HorizontalContentAlignment="Left"
+                                                Margin="0,0,22,0"
+                                                Content="{Binding Name}">
+                                            <b:Interaction.Behaviors>
+                                                <behaviours:VariableStartDragBehaviour />
+                                            </b:Interaction.Behaviors>
+                                        </Button>
+                                        <Button Width="20" 
+                                                Height="20" 
+                                                HorizontalAlignment="Right"
+                                                VerticalAlignment="Center"
+                                                Command="{Binding ElementName=LeftPanel, Path=DataContext.NodesCanvas.RemoveVariableCommand}"
+                                                CommandParameter="{Binding}">
+                                            <Image Source="Images/Buttons/Button_DeleteObj.png"/>
+                                        </Button>
+                                    </Grid>
+                                  
+                                    <ContentControl Margin="5,0,0,0"
+                                                    HorizontalAlignment="Stretch"
+                                                    VerticalAlignment="Top"
+                                                    Visibility="{Binding Path=., Converter={StaticResource NullVisibilityConverter}}"
+                                                    ContentTemplateSelector="{StaticResource DataTemplateSelector}"
+                                                    Content="{Binding}" 
+                                                    DataContext="{Binding Path=VisualDataProcessor}" />
+                                </StackPanel>
+                               
+                     
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+            </StackPanel>
+
+
+        </Grid>
+    </Grid>
+
+
+</Window>

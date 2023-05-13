@@ -1,0 +1,176 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:templateSelectors="clr-namespace:OpenCvRuntimeEditor.Styles.TemplateSelectors"
+                    xmlns:converters="clr-namespace:OpenCvRuntimeEditor.Converters"
+                    xmlns:viewModels="clr-namespace:OpenCvRuntimeEditor.ViewModels"
+                    xmlns:controls="clr-namespace:OpenCvRuntimeEditor.Controls">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="../Styles/PinDataTemplates.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <templateSelectors:PinTemplateSelector x:Key="PinTemplateSelector" />
+    <templateSelectors:PinDataTemplateSelector x:Key="PinDataTemplateSelector" />
+    <converters:PinPositionConverter x:Key="PinPositionConverter" />
+    <converters:ErrorInfoToVisibilityConverter x:Key="ErrorInfoToVisibilityConverter" />
+    <converters:NullVisibilityConverter x:Key="NullVisibilityConverter" />
+    <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    <converters:TypeToBrushConverter x:Key="TypeToBrushConverter" />
+    <converters:PinConnectorWidthConverter x:Key="PinConnectorWidthConverter" />
+    <converters:PinTooltipConverter x:Key="PinTooltipConverter" />
+    <converters:PinDataProcessorVisibilityConverter x:Key="PinDataProcessorVisibilityConverter" />
+
+    <DataTemplate x:Key="InPinDefaultTemplate" DataType="viewModels:NodePinViewModel">
+        <Grid Visibility="{Binding IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+
+            <Grid
+                Visibility="{Binding ErrorInfo.Messages.Count, Converter={StaticResource ErrorInfoToVisibilityConverter}}"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Margin="-30,0,0,0">
+                <Grid.ToolTip>
+                    <ItemsControl ItemsSource="{Binding ErrorInfo.Messages}" BorderThickness="0" BorderBrush="DimGray"
+                                  Foreground="Red">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Message}" FontSize="15" />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                </Grid.ToolTip>
+                <Image Source="../Images/Icons/IconErrorPin.png" />
+            </Grid>
+
+            <StackPanel Orientation="Horizontal"
+                        Margin="5,0,10,0">
+
+                <controls:PinButton x:Name="PinInteractionButton"
+                                    VerticalAlignment="Center"
+                                    ToolTip="{Binding Path=., Converter={StaticResource PinTooltipConverter}}">
+
+                    <controls:PinButton.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Grid VerticalAlignment="Center">
+                                <Ellipse Name="PinElipse"
+                                         Fill="#181818"
+                                         Height="10"
+                                         Width="14"
+                                         StrokeThickness="3"
+                                         Stroke="{Binding PinType, Converter={StaticResource TypeToBrushConverter}}"
+                                         Margin="-1,0,0,0" />
+
+                                <Rectangle Fill="Transparent"
+                                           Height="10"
+                                           Width="10"
+                                           StrokeThickness="2,0"
+                                           Stroke="{Binding ElementName=PinElipse, Path=Stroke}"
+                                           Margin="10,0,0,0" />
+
+                                <Rectangle Name="PinHoverRect"
+                                           Fill="#181818"
+                                           Height="6"
+                                           Width="{Binding Links.Count, Converter={StaticResource PinConnectorWidthConverter}}"
+                                           StrokeThickness="0"
+                                           Stroke="{Binding ElementName=PinElipse, Path=Stroke}"
+                                           Margin="6,0,0,0" />
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="true">
+                                    <Setter TargetName="PinHoverRect" Property="StrokeThickness"
+                                            Value="2,0" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </controls:PinButton.Template>
+                </controls:PinButton>
+
+                <Label Content="{Binding Name}" Foreground="White" FontWeight="Bold" />
+
+                <Grid
+                    Visibility="{Binding Links.Count, Converter={StaticResource PinDataProcessorVisibilityConverter}}">
+                    <ContentControl Margin="5,0,0,0"
+                                    HorizontalAlignment="Stretch"
+                                    Visibility="{Binding Converter={StaticResource NullVisibilityConverter}}"
+                                    ContentTemplateSelector="{StaticResource PinDataTemplateSelector}"
+                                    Content="{Binding}"
+                                    DataContext="{Binding VisualDataProcessor}"
+                                    VerticalAlignment="Center" />
+                </Grid>
+
+
+            </StackPanel>
+
+            <controls:ShittyBindingHelper OutPosition="{Binding Pos, Mode=TwoWay}">
+                <controls:ShittyBindingHelper.InPosition>
+                    <MultiBinding Converter="{StaticResource PinPositionConverter}">
+                        <Binding ElementName="PinInteractionButton" />
+                        <Binding ElementName="Node" Path="DataContext.Pos" />
+                    </MultiBinding>
+                </controls:ShittyBindingHelper.InPosition>
+            </controls:ShittyBindingHelper>
+        </Grid>
+    </DataTemplate>
+
+    <DataTemplate x:Key="OutPinDefaultTemplate" DataType="viewModels:NodePinViewModel">
+        <Grid>
+            <StackPanel Orientation="Horizontal"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Margin="10,0,5,0">
+                <Label Content="{Binding Name}" Foreground="White" FontWeight="Bold" />
+
+                <controls:PinButton x:Name="PinInteractionButton"
+                                    VerticalAlignment="Center"
+                                    ToolTip="{Binding Path=., Converter={StaticResource PinTooltipConverter}}">
+                    <controls:PinButton.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Grid Margin="0,2,0,0" VerticalAlignment="Center">
+
+                                <Ellipse Name="PinElipse"
+                                         Fill="#181818"
+                                         Height="10"
+                                         Width="14"
+                                         StrokeThickness="3"
+                                         Stroke="{Binding PinType, Converter={StaticResource TypeToBrushConverter}}"
+                                         Margin="5,0,0,0" />
+
+                                <Rectangle Fill="Transparent"
+                                           Height="10"
+                                           Width="10"
+                                           StrokeThickness="2,0"
+                                           Stroke="{Binding ElementName=PinElipse, Path=Stroke}"
+                                           Margin="-5,0,0,0" />
+
+                                <Rectangle Name="PinHoverRect"
+                                           Fill="#181818"
+                                           Height="6"
+                                           Width="{Binding Links.Count, Converter={StaticResource PinConnectorWidthConverter}}"
+                                           StrokeThickness="0"
+                                           Stroke="{Binding ElementName=PinElipse, Path=Stroke}"
+                                           Margin="-1,0,0,0" />
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="true">
+                                    <Setter TargetName="PinHoverRect" Property="StrokeThickness"
+                                            Value="2,0" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </controls:PinButton.Template>
+                </controls:PinButton>
+
+            </StackPanel>
+
+            <controls:ShittyBindingHelper OutPosition="{Binding Pos, Mode=TwoWay}">
+                <controls:ShittyBindingHelper.InPosition>
+                    <MultiBinding Converter="{StaticResource PinPositionConverter}">
+                        <Binding ElementName="PinInteractionButton" />
+                        <Binding ElementName="Node" Path="DataContext.Pos" />
+                        <Binding ElementName="Node" Path="ActualWidth" />
+                    </MultiBinding>
+                </controls:ShittyBindingHelper.InPosition>
+            </controls:ShittyBindingHelper>
+        </Grid>
+    </DataTemplate>
+
+</ResourceDictionary>

@@ -1,0 +1,174 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:converters="clr-namespace:OpenCvRuntimeEditor.Converters"
+                    xmlns:viewModels="clr-namespace:OpenCvRuntimeEditor.ViewModels"
+                    xmlns:behaviours="clr-namespace:OpenCvRuntimeEditor.Behaviours"
+                    xmlns:b="http://schemas.microsoft.com/xaml/behaviors">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="../Styles/PinTemplates.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    <converters:NullVisibilityConverter x:Key="NullVisibilityConverter" />
+    <converters:NodeDocumentationConverter x:Key="NodeDocumentationConverter" />
+    <converters:InversedBooleanToVisibilityConverter x:Key="InversedBooleanToVisibilityConverter" />
+
+    <Style x:Key="TextBoxLabelStyle" TargetType="{x:Type Label}">
+    </Style>
+
+    <DataTemplate x:Key="NodeDefaultTemplate" DataType="viewModels:NodeViewModel">
+        <Grid DataContext="{Binding Path=DataContext, RelativeSource={RelativeSource AncestorType={x:Type ContentPresenter}, AncestorLevel=2}}">
+       
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid Visibility="{Binding ErrorInfo.Messages.Count, Converter={StaticResource ErrorInfoToVisibilityConverter}}"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Margin="5,-30,0,0">
+                <Grid.ToolTip>
+                    <ItemsControl ItemsSource="{Binding ErrorInfo.Messages}" BorderThickness="0" BorderBrush="DimGray"
+                                  Foreground="Red">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Message}" FontSize="15" />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                </Grid.ToolTip>
+                <Image Source="../Images/Icons/IconErrorNode.png" Width="30" Height="30" />
+            </Grid>
+
+            <Grid Grid.Row="0" Grid.Column="0">
+                <b:Interaction.Behaviors>
+                    <behaviours:NodeResizeTriggerBehaviour />
+                </b:Interaction.Behaviors>
+                <Grid.Effect>
+                    <DropShadowEffect />
+                </Grid.Effect>
+
+                <Border Background="#181818"
+                        BorderThickness="1"
+                        BorderBrush="Gray"
+                        CornerRadius="10">
+                    <Border.Effect>
+                        <DropShadowEffect />
+                    </Border.Effect>
+                </Border>
+
+                <Border BorderThickness="1"
+                        BorderBrush="Gray"
+                        CornerRadius="10"
+                        Height="35"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Stretch">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                            <GradientStop Color="Gray" Offset="0.0" />
+                            <GradientStop Color="#29A5A5A5" Offset="0.4" />
+                            <GradientStop Color="#29A5A5A5" Offset="1" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+
+                    <Border.Clip>
+                        <PathGeometry>
+                            <PathGeometry.Figures>
+                                <PathFigure StartPoint="0,0">
+                                    <PathFigure.Segments>
+                                        <LineSegment Point="999,0" />
+                                        <LineSegment Point="999,25" />
+                                        <LineSegment Point="0,25" />
+                                        <LineSegment Point="0,0" />
+                                    </PathFigure.Segments>
+                                </PathFigure>
+                            </PathGeometry.Figures>
+                        </PathGeometry>
+                    </Border.Clip>
+                </Border>
+
+                <TextBox Text="{Binding Name}"
+                       Margin="20,0,20,0"
+                       VerticalAlignment="Top"
+                       HorizontalAlignment="Center"
+                       Foreground="#ECECEC"
+                       FontWeight="Bold"
+                       FontFamily="Times New Roman"
+                       FontSize="17"
+                       UseLayoutRounding="True"
+                       SnapsToDevicePixels="True" 
+                       Background="Transparent"
+                       BorderThickness="1"
+                       BorderBrush="Gray"
+                       CaretBrush="White"
+                       ToolTip="{Binding Path=., Converter={StaticResource NodeDocumentationConverter}}">
+                    <b:Interaction.Behaviors>
+                        <behaviours:DoubleClickTextBoxBehaviour />
+                    </b:Interaction.Behaviors>
+                </TextBox>
+
+                <StackPanel Orientation="Vertical" Margin="0,25,0,0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <ItemsControl ItemsSource="{Binding InPins}"
+                                      Grid.Column="0"
+                                      HorizontalAlignment="Left"
+                                      ItemTemplateSelector="{StaticResource PinTemplateSelector}" />
+
+                        <ItemsControl ItemsSource="{Binding OutPins}"
+                                      Grid.Column="1"
+                                      HorizontalAlignment="Right"
+                                      VerticalAlignment="Top"
+                                      ItemTemplateSelector="{StaticResource PinTemplateSelector}" />
+
+                    </Grid>
+
+                    <Grid Visibility="{Binding PipelineData.PreviewImage, Converter={StaticResource NullVisibilityConverter}}">
+                        <Button Content="🔍" 
+                                Width="20"
+                                HorizontalAlignment="Right" 
+                                VerticalAlignment="Top" 
+                                Margin="0,0,5,0"
+                                Command="{Binding OpenPreviewWindowCommand}"/>
+                        <Expander IsExpanded="{Binding IsPreviewOpened}"
+                                  Margin="0,0,15,-1"
+                                  VerticalAlignment="Bottom"
+                                  HorizontalAlignment="Left"
+                                  Header="Preview"
+                                  Foreground="White">
+                            <Grid MaxHeight="300" MaxWidth="300">
+                                <Image Source="{Binding PipelineData.PreviewImage}" Margin="10" />
+                            </Grid>
+
+                        </Expander>
+                    </Grid>
+                 
+                </StackPanel>
+
+            </Grid>
+
+            <Border BorderBrush="Orange"
+                    BorderThickness="3"
+                    Margin="-4"
+                    CornerRadius="15"
+                    Visibility="{Binding IsSelected, Converter={StaticResource BooleanToVisibilityConverter}}" />
+
+            <Border BorderBrush="Red"
+                    BorderThickness="1"
+                    Margin="-1"
+                    CornerRadius="15"
+                    Visibility="{Binding PipelineData.CalculationSuccessfull, Converter={StaticResource InversedBooleanToVisibilityConverter}}" />
+
+        </Grid>
+    </DataTemplate>
+
+</ResourceDictionary>

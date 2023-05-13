@@ -1,0 +1,76 @@
+﻿<Window x:Class="OpenCvRuntimeEditor.WIndows.NodesWIndow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:OpenCvRuntimeEditor.ViewModels"
+        mc:Ignorable="d"
+        Title="Nodes Window"
+        SizeToContent="Height"
+        Topmost="True"
+        AllowsTransparency="True" Background="Transparent"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        ShowInTaskbar="False"
+        MinHeight="300"
+        MaxHeight="600"
+        Width="500"
+        FocusManager.FocusedElement="{Binding ElementName=TextInputBox}"
+        d:DataContext="{d:DesignInstance viewModels:NodesWindowViewModel}"
+        Name="NodesWindow">
+    <Grid Background="#1B1B1B">
+        <TextBlock VerticalAlignment="Top"
+                   HorizontalAlignment="Center"
+                   Foreground="White"
+                   FontSize="20" FontFamily="Arial" >
+            <Run Text="Nodes Window "/>
+            <Run Text="{Binding AvailableNodes.Count, Mode=OneWay}"/>
+        </TextBlock>
+        <TextBox Name="TextInputBox"
+                 Text="{Binding FilterInput, UpdateSourceTrigger=PropertyChanged}"
+                 HorizontalAlignment="Stretch"
+                 Focusable="True"
+                 Height="20"
+                 Margin="5,25,5,5"
+                 VerticalAlignment="Top">
+            <TextBox.InputBindings>
+                <KeyBinding Command="{Binding Path=EnterPressedCommand}" Key="Enter" />
+                <KeyBinding Command="{Binding Path=NavigateDownCommand}" Key="Tab" />
+                <KeyBinding Command="{Binding Path=NavigateDownCommand}" Key="Down" />
+                <KeyBinding Command="{Binding Path=NavigateUpCommand}" Key="Up" />
+            </TextBox.InputBindings>
+        </TextBox>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="5,55,5,0" VerticalAlignment="Stretch">
+            <ItemsControl ItemsSource="{Binding AvailableNodes}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Button Background="#383838"
+                                    Focusable="False"
+                                    Name="NodeSelectButton"
+                                    Foreground="White"
+                                    HorizontalAlignment="Stretch"
+                                    HorizontalContentAlignment="Left"
+                                    Command="{Binding ElementName=NodesWindow, Path=DataContext.NodeSelectedCommand}"
+                                    CommandParameter="{Binding Path=.}">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding ReflectionSource}" HorizontalAlignment="Stretch"
+                                               TextAlignment="Left" Margin="5,0,0,0" Foreground="Gray" />
+                                    <TextBlock Text="{Binding DisplayName}" HorizontalAlignment="Stretch"
+                                               TextAlignment="Left" />
+                                </StackPanel>
+                            </Button>
+
+                            <Border BorderThickness="1" BorderBrush="Orange"
+                                    Visibility="{Binding IsSelectedInNodesList}"
+                                    Width="{Binding ElementName=NodeSelectButton, Path=Width}"
+                                    Height="{Binding ElementName=NodeSelectButton, Path=Height}" />
+                        </Grid>
+
+
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</Window>

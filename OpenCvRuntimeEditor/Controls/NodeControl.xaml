@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="OpenCvRuntimeEditor.Controls.NodeControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:behaviours="clr-namespace:OpenCvRuntimeEditor.Behaviours"
+             xmlns:templateSelectors="clr-namespace:OpenCvRuntimeEditor.Styles.TemplateSelectors"
+             xmlns:viewModels="clr-namespace:OpenCvRuntimeEditor.ViewModels"
+             xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+             mc:Ignorable="d"
+             Width="NaN"
+             Height="NaN"
+             d:DesignHeight="100"
+             d:DesignWidth="200"
+             RenderTransformOrigin="0,0"
+             Name="Node"
+             UseLayoutRounding="True"
+             d:DataContext="{d:DesignInstance viewModels:NodeViewModel}">
+    <b:Interaction.Behaviors>
+        <behaviours:NodeBehaviour />
+    </b:Interaction.Behaviors>
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Styles/NodeTemplates.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <templateSelectors:NodeTemplateSelector x:Key="TemplateSelector" />
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <UserControl.RenderTransform>
+        <TransformGroup>
+            <TranslateTransform x:Name="NodeTranslateTransform" X="{Binding Path=Pos.X}" Y="{Binding Path=Pos.Y}" />
+        </TransformGroup>
+    </UserControl.RenderTransform>
+
+    <ContentPresenter ContentTemplateSelector="{StaticResource TemplateSelector}" DataContext="{Binding}" />
+
+</UserControl>

@@ -1,0 +1,1414 @@
+{
+  "Links": [
+    {
+      "FromNode": 3,
+      "ToNode": 2,
+      "OutPinIndex": 0,
+      "InPinIndex": 0
+    },
+    {
+      "FromNode": 10,
+      "ToNode": 7,
+      "OutPinIndex": 1,
+      "InPinIndex": 0
+    },
+    {
+      "FromNode": 4,
+      "ToNode": 7,
+      "OutPinIndex": 0,
+      "InPinIndex": 2
+    },
+    {
+      "FromNode": 6,
+      "ToNode": 7,
+      "OutPinIndex": 0,
+      "InPinIndex": 6
+    },
+    {
+      "FromNode": 1,
+      "ToNode": 8,
+      "OutPinIndex": 0,
+      "InPinIndex": 0
+    },
+    {
+      "FromNode": 8,
+      "ToNode": 9,
+      "OutPinIndex": 1,
+      "InPinIndex": 0
+    },
+    {
+      "FromNode": 2,
+      "ToNode": 10,
+      "OutPinIndex": 1,
+      "InPinIndex": 0
+    },
+    {
+      "FromNode": 4,
+      "ToNode": 10,
+      "OutPinIndex": 0,
+      "InPinIndex": 3
+    },
+    {
+      "FromNode": 6,
+      "ToNode": 10,
+      "OutPinIndex": 0,
+      "InPinIndex": 7
+    },
+    {
+      "FromNode": 7,
+      "ToNode": 1,
+      "OutPinIndex": 1,
+      "InPinIndex": 0
+    },
+    {
+      "FromNode": 0,
+      "ToNode": 3,
+      "OutPinIndex": 0,
+      "InPinIndex": 0
+    },
+    {
+      "FromNode": 11,
+      "ToNode": 5,
+      "OutPinIndex": 0,
+      "InPinIndex": 0
+    },
+    {
+      "FromNode": 9,
+      "ToNode": 11,
+      "OutPinIndex": 1,
+      "InPinIndex": 0
+    },
+    {
+      "FromNode": 0,
+      "ToNode": 12,
+      "OutPinIndex": 0,
+      "InPinIndex": 0
+    },
+    {
+      "FromNode": 5,
+      "ToNode": 12,
+      "OutPinIndex": 1,
+      "InPinIndex": 1
+    },
+    {
+      "FromNode": 12,
+      "ToNode": 14,
+      "OutPinIndex": 0,
+      "InPinIndex": 0
+    },
+    {
+      "FromNode": 12,
+      "ToNode": 13,
+      "OutPinIndex": 0,
+      "InPinIndex": 0
+    }
+  ],
+  "Nodes": [
+    {
+      "Pos": "-12,88",
+      "Name": "Load from file",
+      "Id": 0,
+      "TemplateKey": "NodeDefaultTemplate",
+      "StrategyTypeCacheIndex": 0,
+      "StrategyMethodSerializationData": null,
+      "StrategyPropertySerializationData": null,
+      "SerializedConstructorStrategyTypeIndex": -1,
+      "InPinsData": [
+        {
+          "Name": "Path",
+          "IsOptional": true,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 1,
+          "VisualPinObjectData": {
+            "ObjectTypeAssemblyName": "System.Private.CoreLib",
+            "ObjectTypeName": "System.String",
+            "ObjectTypeData": "\"..\\\\..\\\\..\\\\..\\\\Examples\\\\water_coins.jpg\""
+          }
+        }
+      ],
+      "OutPinsData": [
+        {
+          "Name": "Mat",
+          "IsOptional": false,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 2,
+          "VisualPinObjectData": null
+        }
+      ],
+      "IsPreviewOpened": true,
+      "VariableRefId": -1
+    },
+    {
+      "Pos": "638,88",
+      "Name": "Threshold",
+      "Id": 2,
+      "TemplateKey": "NodeDefaultTemplate",
+      "StrategyTypeCacheIndex": 3,
+      "StrategyMethodSerializationData": {
+        "DeclaringSerializedTypeIndex": 8,
+        "MethodName": "Threshold",
+        "ParameterTypeIndices": [
+          4,
+          5,
+          6,
+          6,
+          7
+        ]
+      },
+      "StrategyPropertySerializationData": null,
+      "SerializedConstructorStrategyTypeIndex": -1,
+      "InPinsData": [
+        {
+          "Name": "src",
+          "IsOptional": false,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 4,
+          "VisualPinObjectData": null
+        },
+        {
+          "Name": "dst",
+          "IsOptional": true,
+          "IsVisible": false,
+          "PinTypeCachedIndex": 5,
+          "VisualPinObjectData": null
+        },
+        {
+          "Name": "threshold",
+          "IsOptional": true,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 6,
+          "VisualPinObjectData": {
+            "ObjectTypeAssemblyName": "System.Private.CoreLib",
+            "ObjectTypeName": "System.Double",
+            "ObjectTypeData": "113.0"
+          }
+        },
+        {
+          "Name": "maxValue",
+          "IsOptional": true,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 6,
+          "VisualPinObjectData": {
+            "ObjectTypeAssemblyName": "System.Private.CoreLib",
+            "ObjectTypeName": "System.Double",
+            "ObjectTypeData": "200.0"
+          }
+        },
+        {
+          "Name": "thresholdType",
+          "IsOptional": true,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 7,
+          "VisualPinObjectData": {
+            "ObjectTypeAssemblyName": "Emgu.CV",
+            "ObjectTypeName": "Emgu.CV.CvEnum.ThresholdType",
+            "ObjectTypeData": "1"
+          }
+        }
+      ],
+      "OutPinsData": [
+        {
+          "Name": "double",
+          "IsOptional": false,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 6,
+          "VisualPinObjectData": {
+            "ObjectTypeAssemblyName": "System.Private.CoreLib",
+            "ObjectTypeName": "System.Double",
+            "ObjectTypeData": "113.0"
+          }
+        },
+        {
+          "Name": "dst",
+          "IsOptional": false,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 2,
+          "VisualPinObjectData": null
+        }
+      ],
+      "IsPreviewOpened": true,
+      "VariableRefId": -1
+    },
+    {
+      "Pos": "350,262",
+      "Name": "GetStructuringElement",
+      "Id": 4,
+      "TemplateKey": "NodeDefaultTemplate",
+      "StrategyTypeCacheIndex": 3,
+      "StrategyMethodSerializationData": {
+        "DeclaringSerializedTypeIndex": 8,
+        "MethodName": "GetStructuringElement",
+        "ParameterTypeIndices": [
+          9,
+          10,
+          11
+        ]
+      },
+      "StrategyPropertySerializationData": null,
+      "SerializedConstructorStrategyTypeIndex": -1,
+      "InPinsData": [
+        {
+          "Name": "shape",
+          "IsOptional": true,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 9,
+          "VisualPinObjectData": {
+            "ObjectTypeAssemblyName": "Emgu.CV",
+            "ObjectTypeName": "Emgu.CV.CvEnum.ElementShape",
+            "ObjectTypeData": "0"
+          }
+        },
+        {
+          "Name": "ksize",
+          "IsOptional": true,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 10,
+          "VisualPinObjectData": {
+            "ObjectTypeAssemblyName": "System.Drawing.Primitives",
+            "ObjectTypeName": "System.Drawing.Size",
+            "ObjectTypeData": "\"3, 3\""
+          }
+        },
+        {
+          "Name": "anchor",
+          "IsOptional": true,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 11,
+          "VisualPinObjectData": {
+            "ObjectTypeAssemblyName": "System.Drawing.Primitives",
+            "ObjectTypeName": "System.Drawing.Point",
+            "ObjectTypeData": "\"-1, -1\""
+          }
+        }
+      ],
+      "OutPinsData": [
+        {
+          "Name": "Mat",
+          "IsOptional": false,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 2,
+          "VisualPinObjectData": null
+        }
+      ],
+      "IsPreviewOpened": false,
+      "VariableRefId": -1
+    },
+    {
+      "Pos": "475,412",
+      "Name": "MCvScalar",
+      "Id": 6,
+      "TemplateKey": "NodeDefaultTemplate",
+      "StrategyTypeCacheIndex": 12,
+      "StrategyMethodSerializationData": null,
+      "StrategyPropertySerializationData": null,
+      "SerializedConstructorStrategyTypeIndex": -1,
+      "InPinsData": [],
+      "OutPinsData": [
+        {
+          "Name": "MCvScalar",
+          "IsOptional": false,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 13,
+          "VisualPinObjectData": null
+        }
+      ],
+      "IsPreviewOpened": false,
+      "VariableRefId": -1
+    },
+    {
+      "Pos": "1275,138",
+      "Name": "Dilate",
+      "Id": 7,
+      "TemplateKey": "NodeDefaultTemplate",
+      "StrategyTypeCacheIndex": 3,
+      "StrategyMethodSerializationData": {
+        "DeclaringSerializedTypeIndex": 8,
+        "MethodName": "Dilate",
+        "ParameterTypeIndices": [
+          4,
+          5,
+          4,
+          11,
+          14,
+          15,
+          13
+        ]
+      },
+      "StrategyPropertySerializationData": null,
+      "SerializedConstructorStrategyTypeIndex": -1,
+      "InPinsData": [
+        {
+          "Name": "src",
+          "IsOptional": false,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 4,
+          "VisualPinObjectData": null
+        },
+        {
+          "Name": "dst",
+          "IsOptional": true,
+          "IsVisible": false,
+          "PinTypeCachedIndex": 5,
+          "VisualPinObjectData": null
+        },
+        {
+          "Name": "element",
+          "IsOptional": false,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 4,
+          "VisualPinObjectData": null
+        },
+        {
+          "Name": "anchor",
+          "IsOptional": true,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 11,
+          "VisualPinObjectData": {
+            "ObjectTypeAssemblyName": "System.Drawing.Primitives",
+            "ObjectTypeName": "System.Drawing.Point",
+            "ObjectTypeData": "\"0, 0\""
+          }
+        },
+        {
+          "Name": "iterations",
+          "IsOptional": true,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 14,
+          "VisualPinObjectData": {
+            "ObjectTypeAssemblyName": "System.Private.CoreLib",
+            "ObjectTypeName": "System.Int32",
+            "ObjectTypeData": "3"
+          }
+        },
+        {
+          "Name": "borderType",
+          "IsOptional": true,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 15,
+          "VisualPinObjectData": {
+            "ObjectTypeAssemblyName": "Emgu.CV",
+            "ObjectTypeName": "Emgu.CV.CvEnum.BorderType",
+            "ObjectTypeData": "0"
+          }
+        },
+        {
+          "Name": "borderValue",
+          "IsOptional": false,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 13,
+          "VisualPinObjectData": null
+        }
+      ],
+      "OutPinsData": [
+        {
+          "Name": "src",
+          "IsOptional": false,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 4,
+          "VisualPinObjectData": null
+        },
+        {
+          "Name": "dst",
+          "IsOptional": false,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 2,
+          "VisualPinObjectData": null
+        }
+      ],
+      "IsPreviewOpened": true,
+      "VariableRefId": -1
+    },
+    {
+      "Pos": "325,638",
+      "Name": "DistanceTransform",
+      "Id": 8,
+      "TemplateKey": "NodeDefaultTemplate",
+      "StrategyTypeCacheIndex": 3,
+      "StrategyMethodSerializationData": {
+        "DeclaringSerializedTypeIndex": 8,
+        "MethodName": "DistanceTransform",
+        "ParameterTypeIndices": [
+          4,
+          5,
+          5,
+          16,
+          14,
+          17
+        ]
+      },
+      "StrategyPropertySerializationData": null,
+      "SerializedConstructorStrategyTypeIndex": -1,
+      "InPinsData": [
+        {
+          "Name": "src",
+          "IsOptional": false,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 4,
+          "VisualPinObjectData": null
+        },
+        {
+          "Name": "dst",
+          "IsOptional": true,
+          "IsVisible": false,
+          "PinTypeCachedIndex": 5,
+          "VisualPinObjectData": null
+        },
+        {
+          "Name": "labels",
+          "IsOptional": true,
+          "IsVisible": false,
+          "PinTypeCachedIndex": 5,
+          "VisualPinObjectData": null
+        },
+        {
+          "Name": "distanceType",
+          "IsOptional": true,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 16,
+          "VisualPinObjectData": {
+            "ObjectTypeAssemblyName": "Emgu.CV",
+            "ObjectTypeName": "Emgu.CV.CvEnum.DistType",
+            "ObjectTypeData": "2"
+          }
+        },
+        {
+          "Name": "maskSize",
+          "IsOptional": true,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 14,
+          "VisualPinObjectData": {
+            "ObjectTypeAssemblyName": "System.Private.CoreLib",
+            "ObjectTypeName": "System.Int32",
+            "ObjectTypeData": "5"
+          }
+        },
+        {
+          "Name": "labelType",
+          "IsOptional": true,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 17,
+          "VisualPinObjectData": {
+            "ObjectTypeAssemblyName": "Emgu.CV",
+            "ObjectTypeName": "Emgu.CV.CvEnum.DistLabelType",
+            "ObjectTypeData": "0"
+          }
+        }
+      ],
+      "OutPinsData": [
+        {
+          "Name": "src",
+          "IsOptional": false,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 4,
+          "VisualPinObjectData": null
+        },
+        {
+          "Name": "dst",
+          "IsOptional": false,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 2,
+          "VisualPinObjectData": null
+        },
+        {
+          "Name": "labels",
+          "IsOptional": false,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 2,
+          "VisualPinObjectData": null
+        }
+      ],
+      "IsPreviewOpened": true,
+      "VariableRefId": -1
+    },
+    {
+      "Pos": "625,638",
+      "Name": "Threshold",
+      "Id": 9,
+      "TemplateKey": "NodeDefaultTemplate",
+      "StrategyTypeCacheIndex": 3,
+      "StrategyMethodSerializationData": {
+        "DeclaringSerializedTypeIndex": 8,
+        "MethodName": "Threshold",
+        "ParameterTypeIndices": [
+          4,
+          5,
+          6,
+          6,
+          7
+        ]
+      },
+      "StrategyPropertySerializationData": null,
+      "SerializedConstructorStrategyTypeIndex": -1,
+      "InPinsData": [
+        {
+          "Name": "src",
+          "IsOptional": false,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 4,
+          "VisualPinObjectData": null
+        },
+        {
+          "Name": "dst",
+          "IsOptional": true,
+          "IsVisible": false,
+          "PinTypeCachedIndex": 5,
+          "VisualPinObjectData": null
+        },
+        {
+          "Name": "threshold",
+          "IsOptional": true,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 6,
+          "VisualPinObjectData": {
+            "ObjectTypeAssemblyName": "System.Private.CoreLib",
+            "ObjectTypeName": "System.Double",
+            "ObjectTypeData": "23.73"
+          }
+        },
+        {
+          "Name": "maxValue",
+          "IsOptional": true,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 6,
+          "VisualPinObjectData": {
+            "ObjectTypeAssemblyName": "System.Private.CoreLib",
+            "ObjectTypeName": "System.Double",
+            "ObjectTypeData": "189.84"
+          }
+        },
+        {
+          "Name": "thresholdType",
+          "IsOptional": true,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 7,
+          "VisualPinObjectData": {
+            "ObjectTypeAssemblyName": "Emgu.CV",
+            "ObjectTypeName": "Emgu.CV.CvEnum.ThresholdType",
+            "ObjectTypeData": "0"
+          }
+        }
+      ],
+      "OutPinsData": [
+        {
+          "Name": "double",
+          "IsOptional": false,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 6,
+          "VisualPinObjectData": {
+            "ObjectTypeAssemblyName": "System.Private.CoreLib",
+            "ObjectTypeName": "System.Double",
+            "ObjectTypeData": "23.73"
+          }
+        },
+        {
+          "Name": "dst",
+          "IsOptional": false,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 2,
+          "VisualPinObjectData": null
+        }
+      ],
+      "IsPreviewOpened": true,
+      "VariableRefId": -1
+    },
+    {
+      "Pos": "975,112",
+      "Name": "MorphologyEx",
+      "Id": 10,
+      "TemplateKey": "NodeDefaultTemplate",
+      "StrategyTypeCacheIndex": 3,
+      "StrategyMethodSerializationData": {
+        "DeclaringSerializedTypeIndex": 8,
+        "MethodName": "MorphologyEx",
+        "ParameterTypeIndices": [
+          4,
+          5,
+          18,
+          4,
+          11,
+          14,
+          15,
+          13
+        ]
+      },
+      "StrategyPropertySerializationData": null,
+      "SerializedConstructorStrategyTypeIndex": -1,
+      "InPinsData": [
+        {
+          "Name": "src",
+          "IsOptional": false,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 4,
+          "VisualPinObjectData": null
+        },
+        {
+          "Name": "dst",
+          "IsOptional": true,
+          "IsVisible": false,
+          "PinTypeCachedIndex": 5,
+          "VisualPinObjectData": null
+        },
+        {
+          "Name": "operation",
+          "IsOptional": true,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 18,
+          "VisualPinObjectData": {
+            "ObjectTypeAssemblyName": "Emgu.CV",
+            "ObjectTypeName": "Emgu.CV.CvEnum.MorphOp",
+            "ObjectTypeData": "2"
+          }
+        },
+        {
+          "Name": "kernel",
+          "IsOptional": false,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 4,
+          "VisualPinObjectData": null
+        },
+        {
+          "Name": "anchor",
+          "IsOptional": true,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 11,
+          "VisualPinObjectData": {
+            "ObjectTypeAssemblyName": "System.Drawing.Primitives",
+            "ObjectTypeName": "System.Drawing.Point",
+            "ObjectTypeData": "\"0, 0\""
+          }
+        },
+        {
+          "Name": "iterations",
+          "IsOptional": true,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 14,
+          "VisualPinObjectData": {
+            "ObjectTypeAssemblyName": "System.Private.CoreLib",
+            "ObjectTypeName": "System.Int32",
+            "ObjectTypeData": "3"
+          }
+        },
+        {
+          "Name": "borderType",
+          "IsOptional": true,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 15,
+          "VisualPinObjectData": {
+            "ObjectTypeAssemblyName": "Emgu.CV",
+            "ObjectTypeName": "Emgu.CV.CvEnum.BorderType",
+            "ObjectTypeData": "0"
+          }
+        },
+        {
+          "Name": "borderValue",
+          "IsOptional": false,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 13,
+          "VisualPinObjectData": null
+        }
+      ],
+      "OutPinsData": [
+        {
+          "Name": "src",
+          "IsOptional": false,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 4,
+          "VisualPinObjectData": null
+        },
+        {
+          "Name": "dst",
+          "IsOptional": false,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 2,
+          "VisualPinObjectData": null
+        }
+      ],
+      "IsPreviewOpened": true,
+      "VariableRefId": -1
+    },
+    {
+      "Pos": "75,638",
+      "Name": "ToImage",
+      "Id": 1,
+      "TemplateKey": "NodeDefaultTemplate",
+      "StrategyTypeCacheIndex": 19,
+      "StrategyMethodSerializationData": null,
+      "StrategyPropertySerializationData": null,
+      "SerializedConstructorStrategyTypeIndex": -1,
+      "InPinsData": [
+        {
+          "Name": "Mat",
+          "IsOptional": false,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 2,
+          "VisualPinObjectData": null
+        },
+        {
+          "Name": "Color",
+          "IsOptional": true,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 20,
+          "VisualPinObjectData": {
+            "ObjectTypeAssemblyName": "Emgu.CV",
+            "ObjectTypeName": "Emgu.CV.Structure.Gray",
+            "ObjectTypeData": "%Type%"
+          }
+        },
+        {
+          "Name": "Depth",
+          "IsOptional": true,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 21,
+          "VisualPinObjectData": {
+            "ObjectTypeAssemblyName": "System.Private.CoreLib",
+            "ObjectTypeName": "System.Byte",
+            "ObjectTypeData": "%Type%"
+          }
+        },
+        {
+          "Name": "TryShareData",
+          "IsOptional": true,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 22,
+          "VisualPinObjectData": {
+            "ObjectTypeAssemblyName": "System.Private.CoreLib",
+            "ObjectTypeName": "System.Boolean",
+            "ObjectTypeData": "false"
+          }
+        }
+      ],
+      "OutPinsData": [
+        {
+          "Name": "Image",
+          "IsOptional": false,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 26,
+          "VisualPinObjectData": null
+        }
+      ],
+      "IsPreviewOpened": false,
+      "VariableRefId": -1
+    },
+    {
+      "Pos": "350,88",
+      "Name": "ToImage",
+      "Id": 3,
+      "TemplateKey": "NodeDefaultTemplate",
+      "StrategyTypeCacheIndex": 19,
+      "StrategyMethodSerializationData": null,
+      "StrategyPropertySerializationData": null,
+      "SerializedConstructorStrategyTypeIndex": -1,
+      "InPinsData": [
+        {
+          "Name": "Mat",
+          "IsOptional": false,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 2,
+          "VisualPinObjectData": null
+        },
+        {
+          "Name": "Color",
+          "IsOptional": true,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 20,
+          "VisualPinObjectData": {
+            "ObjectTypeAssemblyName": "Emgu.CV",
+            "ObjectTypeName": "Emgu.CV.Structure.Gray",
+            "ObjectTypeData": "%Type%"
+          }
+        },
+        {
+          "Name": "Depth",
+          "IsOptional": true,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 21,
+          "VisualPinObjectData": {
+            "ObjectTypeAssemblyName": "System.Private.CoreLib",
+            "ObjectTypeName": "System.Byte",
+            "ObjectTypeData": "%Type%"
+          }
+        },
+        {
+          "Name": "TryShareData",
+          "IsOptional": true,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 22,
+          "VisualPinObjectData": {
+            "ObjectTypeAssemblyName": "System.Private.CoreLib",
+            "ObjectTypeName": "System.Boolean",
+            "ObjectTypeData": "false"
+          }
+        }
+      ],
+      "OutPinsData": [
+        {
+          "Name": "Image",
+          "IsOptional": false,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 26,
+          "VisualPinObjectData": null
+        }
+      ],
+      "IsPreviewOpened": false,
+      "VariableRefId": -1
+    },
+    {
+      "Pos": "1225,650",
+      "Name": "ConnectedComponents",
+      "Id": 5,
+      "TemplateKey": "NodeDefaultTemplate",
+      "StrategyTypeCacheIndex": 3,
+      "StrategyMethodSerializationData": {
+        "DeclaringSerializedTypeIndex": 8,
+        "MethodName": "ConnectedComponents",
+        "ParameterTypeIndices": [
+          4,
+          5,
+          27,
+          28,
+          29
+        ]
+      },
+      "StrategyPropertySerializationData": null,
+      "SerializedConstructorStrategyTypeIndex": -1,
+      "InPinsData": [
+        {
+          "Name": "image",
+          "IsOptional": false,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 4,
+          "VisualPinObjectData": null
+        },
+        {
+          "Name": "labels",
+          "IsOptional": true,
+          "IsVisible": false,
+          "PinTypeCachedIndex": 5,
+          "VisualPinObjectData": null
+        },
+        {
+          "Name": "connectivity",
+          "IsOptional": true,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 27,
+          "VisualPinObjectData": {
+            "ObjectTypeAssemblyName": "Emgu.CV",
+            "ObjectTypeName": "Emgu.CV.CvEnum.LineType",
+            "ObjectTypeData": "8"
+          }
+        },
+        {
+          "Name": "labelType",
+          "IsOptional": true,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 28,
+          "VisualPinObjectData": {
+            "ObjectTypeAssemblyName": "Emgu.CV",
+            "ObjectTypeName": "Emgu.CV.CvEnum.DepthType",
+            "ObjectTypeData": "4"
+          }
+        },
+        {
+          "Name": "cclType",
+          "IsOptional": true,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 29,
+          "VisualPinObjectData": {
+            "ObjectTypeAssemblyName": "Emgu.CV",
+            "ObjectTypeName": "Emgu.CV.CvEnum.ConnectedComponentsAlgorithmsTypes",
+            "ObjectTypeData": "-1"
+          }
+        }
+      ],
+      "OutPinsData": [
+        {
+          "Name": "int",
+          "IsOptional": false,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 14,
+          "VisualPinObjectData": {
+            "ObjectTypeAssemblyName": "System.Private.CoreLib",
+            "ObjectTypeName": "System.Int32",
+            "ObjectTypeData": "26"
+          }
+        },
+        {
+          "Name": "labels",
+          "IsOptional": false,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 2,
+          "VisualPinObjectData": null
+        }
+      ],
+      "IsPreviewOpened": true,
+      "VariableRefId": -1
+    },
+    {
+      "Pos": "975,662",
+      "Name": "ToImage",
+      "Id": 11,
+      "TemplateKey": "NodeDefaultTemplate",
+      "StrategyTypeCacheIndex": 19,
+      "StrategyMethodSerializationData": null,
+      "StrategyPropertySerializationData": null,
+      "SerializedConstructorStrategyTypeIndex": -1,
+      "InPinsData": [
+        {
+          "Name": "Mat",
+          "IsOptional": false,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 2,
+          "VisualPinObjectData": null
+        },
+        {
+          "Name": "Color",
+          "IsOptional": true,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 20,
+          "VisualPinObjectData": {
+            "ObjectTypeAssemblyName": "Emgu.CV",
+            "ObjectTypeName": "Emgu.CV.Structure.Gray",
+            "ObjectTypeData": "%Type%"
+          }
+        },
+        {
+          "Name": "Depth",
+          "IsOptional": true,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 21,
+          "VisualPinObjectData": {
+            "ObjectTypeAssemblyName": "System.Private.CoreLib",
+            "ObjectTypeName": "System.Byte",
+            "ObjectTypeData": "%Type%"
+          }
+        },
+        {
+          "Name": "TryShareData",
+          "IsOptional": true,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 22,
+          "VisualPinObjectData": {
+            "ObjectTypeAssemblyName": "System.Private.CoreLib",
+            "ObjectTypeName": "System.Boolean",
+            "ObjectTypeData": "false"
+          }
+        }
+      ],
+      "OutPinsData": [
+        {
+          "Name": "Image",
+          "IsOptional": false,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 26,
+          "VisualPinObjectData": null
+        }
+      ],
+      "IsPreviewOpened": false,
+      "VariableRefId": -1
+    },
+    {
+      "Pos": "1562,638",
+      "Name": "Watershed",
+      "Id": 12,
+      "TemplateKey": "NodeDefaultTemplate",
+      "StrategyTypeCacheIndex": 3,
+      "StrategyMethodSerializationData": {
+        "DeclaringSerializedTypeIndex": 8,
+        "MethodName": "Watershed",
+        "ParameterTypeIndices": [
+          4,
+          30
+        ]
+      },
+      "StrategyPropertySerializationData": null,
+      "SerializedConstructorStrategyTypeIndex": -1,
+      "InPinsData": [
+        {
+          "Name": "image",
+          "IsOptional": false,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 4,
+          "VisualPinObjectData": null
+        },
+        {
+          "Name": "markers",
+          "IsOptional": false,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 30,
+          "VisualPinObjectData": null
+        }
+      ],
+      "OutPinsData": [
+        {
+          "Name": "image",
+          "IsOptional": false,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 4,
+          "VisualPinObjectData": null
+        }
+      ],
+      "IsPreviewOpened": false,
+      "VariableRefId": -1
+    },
+    {
+      "Pos": "1762,688",
+      "Name": "Display Result",
+      "Id": 14,
+      "TemplateKey": "NodeDefaultTemplate",
+      "StrategyTypeCacheIndex": 31,
+      "StrategyMethodSerializationData": null,
+      "StrategyPropertySerializationData": null,
+      "SerializedConstructorStrategyTypeIndex": -1,
+      "InPinsData": [
+        {
+          "Name": "Image",
+          "IsOptional": false,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 4,
+          "VisualPinObjectData": null
+        }
+      ],
+      "OutPinsData": [],
+      "IsPreviewOpened": true,
+      "VariableRefId": -1
+    },
+    {
+      "Pos": "2100,700",
+      "Name": "Save to file",
+      "Id": 13,
+      "TemplateKey": "NodeDefaultTemplate",
+      "StrategyTypeCacheIndex": 32,
+      "StrategyMethodSerializationData": null,
+      "StrategyPropertySerializationData": null,
+      "SerializedConstructorStrategyTypeIndex": -1,
+      "InPinsData": [
+        {
+          "Name": "Input",
+          "IsOptional": false,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 4,
+          "VisualPinObjectData": null
+        },
+        {
+          "Name": "Path",
+          "IsOptional": true,
+          "IsVisible": true,
+          "PinTypeCachedIndex": 1,
+          "VisualPinObjectData": {
+            "ObjectTypeAssemblyName": "System.Private.CoreLib",
+            "ObjectTypeName": "System.String",
+            "ObjectTypeData": "\"..\\\\..\\\\..\\\\..\\\\Examples\\\\out.png\""
+          }
+        }
+      ],
+      "OutPinsData": [],
+      "IsPreviewOpened": true,
+      "VariableRefId": -1
+    }
+  ],
+  "Variables": [],
+  "TypeSerializationContainer": {
+    "Types": [
+      {
+        "AssemblyName": "OpenCvRuntimeEditor",
+        "ClassName": "OpenCvRuntimeEditor.Core.ProcessingStrategies.LoadFromFileProcessingStrategy",
+        "IsGenericParameter": false,
+        "GenericOwnerCacheIndex": 0,
+        "GenericParameterPosition": 0,
+        "IsConstructedGenericType": false,
+        "ConstructedGenericTypeParameterArgumentIndices": null
+      },
+      {
+        "AssemblyName": "System.Private.CoreLib",
+        "ClassName": "System.String",
+        "IsGenericParameter": false,
+        "GenericOwnerCacheIndex": 0,
+        "GenericParameterPosition": 0,
+        "IsConstructedGenericType": false,
+        "ConstructedGenericTypeParameterArgumentIndices": null
+      },
+      {
+        "AssemblyName": "Emgu.CV",
+        "ClassName": "Emgu.CV.Mat",
+        "IsGenericParameter": false,
+        "GenericOwnerCacheIndex": 0,
+        "GenericParameterPosition": 0,
+        "IsConstructedGenericType": false,
+        "ConstructedGenericTypeParameterArgumentIndices": null
+      },
+      {
+        "AssemblyName": "OpenCvRuntimeEditor",
+        "ClassName": "OpenCvRuntimeEditor.Core.ProcessingStrategies.Runtime.RuntimeMethodProcessingStrategy",
+        "IsGenericParameter": false,
+        "GenericOwnerCacheIndex": 0,
+        "GenericParameterPosition": 0,
+        "IsConstructedGenericType": false,
+        "ConstructedGenericTypeParameterArgumentIndices": null
+      },
+      {
+        "AssemblyName": "Emgu.CV",
+        "ClassName": "Emgu.CV.IInputArray",
+        "IsGenericParameter": false,
+        "GenericOwnerCacheIndex": 0,
+        "GenericParameterPosition": 0,
+        "IsConstructedGenericType": false,
+        "ConstructedGenericTypeParameterArgumentIndices": null
+      },
+      {
+        "AssemblyName": "Emgu.CV",
+        "ClassName": "Emgu.CV.IOutputArray",
+        "IsGenericParameter": false,
+        "GenericOwnerCacheIndex": 0,
+        "GenericParameterPosition": 0,
+        "IsConstructedGenericType": false,
+        "ConstructedGenericTypeParameterArgumentIndices": null
+      },
+      {
+        "AssemblyName": "System.Private.CoreLib",
+        "ClassName": "System.Double",
+        "IsGenericParameter": false,
+        "GenericOwnerCacheIndex": 0,
+        "GenericParameterPosition": 0,
+        "IsConstructedGenericType": false,
+        "ConstructedGenericTypeParameterArgumentIndices": null
+      },
+      {
+        "AssemblyName": "Emgu.CV",
+        "ClassName": "Emgu.CV.CvEnum.ThresholdType",
+        "IsGenericParameter": false,
+        "GenericOwnerCacheIndex": 0,
+        "GenericParameterPosition": 0,
+        "IsConstructedGenericType": false,
+        "ConstructedGenericTypeParameterArgumentIndices": null
+      },
+      {
+        "AssemblyName": "Emgu.CV",
+        "ClassName": "Emgu.CV.CvInvoke",
+        "IsGenericParameter": false,
+        "GenericOwnerCacheIndex": 0,
+        "GenericParameterPosition": 0,
+        "IsConstructedGenericType": false,
+        "ConstructedGenericTypeParameterArgumentIndices": null
+      },
+      {
+        "AssemblyName": "Emgu.CV",
+        "ClassName": "Emgu.CV.CvEnum.ElementShape",
+        "IsGenericParameter": false,
+        "GenericOwnerCacheIndex": 0,
+        "GenericParameterPosition": 0,
+        "IsConstructedGenericType": false,
+        "ConstructedGenericTypeParameterArgumentIndices": null
+      },
+      {
+        "AssemblyName": "System.Drawing.Primitives",
+        "ClassName": "System.Drawing.Size",
+        "IsGenericParameter": false,
+        "GenericOwnerCacheIndex": 0,
+        "GenericParameterPosition": 0,
+        "IsConstructedGenericType": false,
+        "ConstructedGenericTypeParameterArgumentIndices": null
+      },
+      {
+        "AssemblyName": "System.Drawing.Primitives",
+        "ClassName": "System.Drawing.Point",
+        "IsGenericParameter": false,
+        "GenericOwnerCacheIndex": 0,
+        "GenericParameterPosition": 0,
+        "IsConstructedGenericType": false,
+        "ConstructedGenericTypeParameterArgumentIndices": null
+      },
+      {
+        "AssemblyName": "OpenCvRuntimeEditor",
+        "ClassName": "OpenCvRuntimeEditor.Core.ProcessingStrategies.NewMCvScalarProcessingStrategy",
+        "IsGenericParameter": false,
+        "GenericOwnerCacheIndex": 0,
+        "GenericParameterPosition": 0,
+        "IsConstructedGenericType": false,
+        "ConstructedGenericTypeParameterArgumentIndices": null
+      },
+      {
+        "AssemblyName": "Emgu.CV",
+        "ClassName": "Emgu.CV.Structure.MCvScalar",
+        "IsGenericParameter": false,
+        "GenericOwnerCacheIndex": 0,
+        "GenericParameterPosition": 0,
+        "IsConstructedGenericType": false,
+        "ConstructedGenericTypeParameterArgumentIndices": null
+      },
+      {
+        "AssemblyName": "System.Private.CoreLib",
+        "ClassName": "System.Int32",
+        "IsGenericParameter": false,
+        "GenericOwnerCacheIndex": 0,
+        "GenericParameterPosition": 0,
+        "IsConstructedGenericType": false,
+        "ConstructedGenericTypeParameterArgumentIndices": null
+      },
+      {
+        "AssemblyName": "Emgu.CV",
+        "ClassName": "Emgu.CV.CvEnum.BorderType",
+        "IsGenericParameter": false,
+        "GenericOwnerCacheIndex": 0,
+        "GenericParameterPosition": 0,
+        "IsConstructedGenericType": false,
+        "ConstructedGenericTypeParameterArgumentIndices": null
+      },
+      {
+        "AssemblyName": "Emgu.CV",
+        "ClassName": "Emgu.CV.CvEnum.DistType",
+        "IsGenericParameter": false,
+        "GenericOwnerCacheIndex": 0,
+        "GenericParameterPosition": 0,
+        "IsConstructedGenericType": false,
+        "ConstructedGenericTypeParameterArgumentIndices": null
+      },
+      {
+        "AssemblyName": "Emgu.CV",
+        "ClassName": "Emgu.CV.CvEnum.DistLabelType",
+        "IsGenericParameter": false,
+        "GenericOwnerCacheIndex": 0,
+        "GenericParameterPosition": 0,
+        "IsConstructedGenericType": false,
+        "ConstructedGenericTypeParameterArgumentIndices": null
+      },
+      {
+        "AssemblyName": "Emgu.CV",
+        "ClassName": "Emgu.CV.CvEnum.MorphOp",
+        "IsGenericParameter": false,
+        "GenericOwnerCacheIndex": 0,
+        "GenericParameterPosition": 0,
+        "IsConstructedGenericType": false,
+        "ConstructedGenericTypeParameterArgumentIndices": null
+      },
+      {
+        "AssemblyName": "OpenCvRuntimeEditor",
+        "ClassName": "OpenCvRuntimeEditor.Core.ProcessingStrategies.ToImageProcessingStrategy",
+        "IsGenericParameter": false,
+        "GenericOwnerCacheIndex": 0,
+        "GenericParameterPosition": 0,
+        "IsConstructedGenericType": false,
+        "ConstructedGenericTypeParameterArgumentIndices": null
+      },
+      {
+        "AssemblyName": "Emgu.CV",
+        "ClassName": "Emgu.CV.IColor",
+        "IsGenericParameter": false,
+        "GenericOwnerCacheIndex": 0,
+        "GenericParameterPosition": 0,
+        "IsConstructedGenericType": false,
+        "ConstructedGenericTypeParameterArgumentIndices": null
+      },
+      {
+        "AssemblyName": "System.Private.CoreLib",
+        "ClassName": "System.ValueType",
+        "IsGenericParameter": false,
+        "GenericOwnerCacheIndex": 0,
+        "GenericParameterPosition": 0,
+        "IsConstructedGenericType": false,
+        "ConstructedGenericTypeParameterArgumentIndices": null
+      },
+      {
+        "AssemblyName": "System.Private.CoreLib",
+        "ClassName": "System.Boolean",
+        "IsGenericParameter": false,
+        "GenericOwnerCacheIndex": 0,
+        "GenericParameterPosition": 0,
+        "IsConstructedGenericType": false,
+        "ConstructedGenericTypeParameterArgumentIndices": null
+      },
+      {
+        "AssemblyName": "Emgu.CV",
+        "ClassName": "Emgu.CV.Image`2",
+        "IsGenericParameter": false,
+        "GenericOwnerCacheIndex": 0,
+        "GenericParameterPosition": 0,
+        "IsConstructedGenericType": false,
+        "ConstructedGenericTypeParameterArgumentIndices": null
+      },
+      {
+        "AssemblyName": "Emgu.CV",
+        "ClassName": "Emgu.CV.Structure.Gray",
+        "IsGenericParameter": false,
+        "GenericOwnerCacheIndex": 0,
+        "GenericParameterPosition": 0,
+        "IsConstructedGenericType": false,
+        "ConstructedGenericTypeParameterArgumentIndices": null
+      },
+      {
+        "AssemblyName": "System.Private.CoreLib",
+        "ClassName": "System.Byte",
+        "IsGenericParameter": false,
+        "GenericOwnerCacheIndex": 0,
+        "GenericParameterPosition": 0,
+        "IsConstructedGenericType": false,
+        "ConstructedGenericTypeParameterArgumentIndices": null
+      },
+      {
+        "AssemblyName": null,
+        "ClassName": null,
+        "IsGenericParameter": false,
+        "GenericOwnerCacheIndex": 23,
+        "GenericParameterPosition": 0,
+        "IsConstructedGenericType": true,
+        "ConstructedGenericTypeParameterArgumentIndices": [
+          24,
+          25
+        ]
+      },
+      {
+        "AssemblyName": "Emgu.CV",
+        "ClassName": "Emgu.CV.CvEnum.LineType",
+        "IsGenericParameter": false,
+        "GenericOwnerCacheIndex": 0,
+        "GenericParameterPosition": 0,
+        "IsConstructedGenericType": false,
+        "ConstructedGenericTypeParameterArgumentIndices": null
+      },
+      {
+        "AssemblyName": "Emgu.CV",
+        "ClassName": "Emgu.CV.CvEnum.DepthType",
+        "IsGenericParameter": false,
+        "GenericOwnerCacheIndex": 0,
+        "GenericParameterPosition": 0,
+        "IsConstructedGenericType": false,
+        "ConstructedGenericTypeParameterArgumentIndices": null
+      },
+      {
+        "AssemblyName": "Emgu.CV",
+        "ClassName": "Emgu.CV.CvEnum.ConnectedComponentsAlgorithmsTypes",
+        "IsGenericParameter": false,
+        "GenericOwnerCacheIndex": 0,
+        "GenericParameterPosition": 0,
+        "IsConstructedGenericType": false,
+        "ConstructedGenericTypeParameterArgumentIndices": null
+      },
+      {
+        "AssemblyName": "Emgu.CV",
+        "ClassName": "Emgu.CV.IInputOutputArray",
+        "IsGenericParameter": false,
+        "GenericOwnerCacheIndex": 0,
+        "GenericParameterPosition": 0,
+        "IsConstructedGenericType": false,
+        "ConstructedGenericTypeParameterArgumentIndices": null
+      },
+      {
+        "AssemblyName": "OpenCvRuntimeEditor",
+        "ClassName": "OpenCvRuntimeEditor.Core.ProcessingStrategies.DisplayImageProcessingStrategy",
+        "IsGenericParameter": false,
+        "GenericOwnerCacheIndex": 0,
+        "GenericParameterPosition": 0,
+        "IsConstructedGenericType": false,
+        "ConstructedGenericTypeParameterArgumentIndices": null
+      },
+      {
+        "AssemblyName": "OpenCvRuntimeEditor",
+        "ClassName": "OpenCvRuntimeEditor.Core.ProcessingStrategies.SaveToFileProcessingStrategy",
+        "IsGenericParameter": false,
+        "GenericOwnerCacheIndex": 0,
+        "GenericParameterPosition": 0,
+        "IsConstructedGenericType": false,
+        "ConstructedGenericTypeParameterArgumentIndices": null
+      }
+    ]
+  }
+}
